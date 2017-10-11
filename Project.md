@@ -1,17 +1,16 @@
-#Shannon Rivers' submission
-##Roster Bots algorithm
+#Shannon Rivers' Roster Bots algorithm
 
 ####Understanding the Question:
-Given the [assignment specifications](./README.md) from [Griffin DePriest @ Blue Star](mailto:griffin.depriest@bluestarsports.com), following is an outline of a possible Roster Bots solution algorithm:
+Given the [assignment specifications](./README.md) from [Griffin DePriest @ Blue Star](mailto:griffin.depriest@bluestarsports.com), following is an outline of my Roster Bots algorithm:
 
-1. We need to create a function that will create a robot `Player` consisting of four attributes:
+1. We need to create an algorithm that will create a robot `Player` consisting of four attributes:
   1. `.name`: _unique_, alphanumeric (i.e. 'ABC1234')
   2. `.speed`: 0-100
   3. `.strength`: 0-100
   4. `.agility`: 0-100
   5. Total Attribute Score (`.TAS` = Sp + St + Ag): <= 100
 
-2. These players will be used by another function to make up a `Roster` that:
+2. These players will make up a `Roster` that:
   1. contains 15 `Player`s
   2. all _unique_ `Player.TAS`
   3. `Roster` aggregate `TAS` <= 175

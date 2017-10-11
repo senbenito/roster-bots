@@ -30,7 +30,7 @@ let makeRoster = (starNumber, max) => {
   return results;
 };
 
-let makePlayer = (uTAS) => {
+let makePlayers = (uTAS) => {
 
 };
 
