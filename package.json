@@ -1,0 +1,27 @@
+{
+  "name": "roster-bots",
+  "version": "1.0.0",
+  "description": "Blue Star Sports Mobile App Developer assignment: Roster Bots",
+  "main": "rosterBots.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/senbenito/roster-bots.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/senbenito/roster-bots/issues"
+  },
+  "homepage": "https://github.com/senbenito/roster-bots#readme",
+  "dependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
+}

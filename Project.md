@@ -1,17 +1,16 @@
-#Shannon Rivers' submission
-##Roster Bots algorithm
+#Shannon Rivers' Roster Bots algorithm
 
 ####Understanding the Question:
-Given the [assignment specifications](./README.md) from [Griffin DePriest @ Blue Star](mailto:griffin.depriest@bluestarsports.com), following is an outline of a possible Roster Bots solution algorithm:
+Given the [assignment specifications](./README.md) from [Griffin DePriest @ Blue Star](mailto:griffin.depriest@bluestarsports.com), following is an outline of my Roster Bots algorithm:
 
-1. We need to create a function that will create a robot `Player` consisting of four attributes:
+1. We need to create an algorithm that will create a robot `Player` consisting of four attributes:
   1. `.name`: _unique_, alphanumeric (i.e. 'ABC1234')
   2. `.speed`: 0-100
   3. `.strength`: 0-100
   4. `.agility`: 0-100
   5. Total Attribute Score (`.TAS` = Sp + St + Ag): <= 100
 
-2. These players will be used by another function to make up a `Roster` that:
+2. These players will make up a `Roster` that:
   1. contains 15 `Player`s
   2. all _unique_ `Player.TAS`
   3. `Roster` aggregate `TAS` <= 175
@@ -38,14 +37,14 @@ And, since the `uTAS` is by definition unique, we can use this number as a porti
 It seems like we have a good understanding of the task at hand as well as how we'll approach building our `Roster` of `Player`s so let's outline these functions we'll need:
 1. `makeRoster(starNumber)`:
   + Input (**integer**): `starNumber` determines attribute point concentration
-  + Output (**object**): fifteen _unique_ `uTAS` variables
+  + Output (**array**): fifteen _unique_ `uTAS` variables
   + Approach:
     1. subtract `starNumber` from 15 = `bench`
     2. use accumulator pattern: **object.uTAS = 0-`bench-1` points**;
     3. divide remaining points across `starNumber`:  **object.uTAS = math.Floor(remaining points / starNumber)**
-2. `makePlayer(uTAS)`:
-  + Input (**integer**): `uTAS` determines the total attribute points to use for this `Player` as well as the `Player.name`
-  + Output (array): fifteen `Player` objects consisting of:
+2. `makePlayers(uTAS)`:
+  + Input (**array**): `uTAS` array determines the total attribute points to use for each `Player` as well as the `Player.name`
+  + Output (**array**): fifteen `Player` objects consisting of:
     + `name` = `ABC` + `uTAS`
     + `speed` = `uTAS` - `getRandomInt()`
     + `strength` = `uTAS` - `getRandomInt()`
@@ -57,8 +56,8 @@ It seems like we have a good understanding of the task at hand as well as how we
     4. `agility` = `uTAS` - (`speed` + `strength`)
 ```javascript
 let getRandomInt = () => {
-  min = Math.ceil(0);
-  max = Math.floor(100);
+  let min = Math.ceil(0);
+  let max = Math.floor(100);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 ```
@@ -68,9 +67,9 @@ We can write some tests to ensure our code does the trick as we go; I like [`cha
 ```javascript
 const assert = require('chai').assert;
 const makeRoster = require('../rosterBots.js').makeRoster;
-const makePlayer = require('../rosterBots.js').makePlayer;
+const makePlayers = require('../rosterBots.js').makePlayers;
 
-assert.typeOf(makeRoster, 'function', 'makeRoster is a function');
-assert.typeOf(makePlayer, 'function', 'makePlayer is a function');
+assert.isFunction(makeRoster, 'makeRoster is a function');
+assert.isFunction(makePlayers, 'makePlayers is a function');
   ...
 ```
