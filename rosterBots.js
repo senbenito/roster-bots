@@ -47,8 +47,7 @@ let makePlayers = (uTAS, teamName) => {
       this.agility = this.TAS - this.speed - this.strength;
     }
   }
-  let team = uTAS.map(e=> new Player(e,teamName));
-  return team;
+  return uTAS.map(e=> new Player(e,teamName));
 };
 
 module.exports = {

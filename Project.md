@@ -73,3 +73,8 @@ assert.isFunction(makeRoster, 'makeRoster is a function');
 assert.isFunction(makePlayers, 'makePlayers is a function');
   ...
 ```
+Tests are written with the [`chai`](http://chaijs.com/) Assertion Library because we can easily get very specific with expressions and because I like supplying more error-context with messages: `assert(expression, message)`.
+
+In order to test as many cases as possible, I created a random-number-generator function, `stars`, in the testing file that is called to supply arguments for the `makeRoster()` function. Since `stars` is called at each new `it`, we can test multiple possibilities.
+
+In addition, rules that may change over the course of the seasons are variables (e.g. `salaryCap` & `playerMax`), allowing us to easily update tests for the latest legue policy.
