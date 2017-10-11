@@ -37,12 +37,12 @@ describe('makeRoster', ()=>{
 
 describe('makePlayers', ()=>{
   it('should be a function', ()=>{
-    assert.isFunction(makePlayers, 'makePlayer is not a function');
+    assert.isFunction(makePlayers, 'makePlayers is not a function');
   });
   it('should output an array of objects', ()=>{
     let playerUTAS = makeRoster(stars());
-    assert.isArray(makePlayers(playerUTAS), 'makePlayer should return an array');
-    assert.isObject(makePlayers(playerUTAS)[stars], 'makePlayer should return an array of objects')
+    assert.isArray(makePlayers(playerUTAS), 'makePlayers should return an array');
+    assert.isObject(makePlayers(playerUTAS)[stars()], 'makePlayers should return an array of objects')
   });
   it('output should contain 15 player objects', ()=>{
     let playerUTAS = makeRoster(stars());
@@ -50,15 +50,21 @@ describe('makePlayers', ()=>{
   });
   it('output should contain players with unique names', ()=>{
     let playerUTAS = makeRoster(stars());
-    makePlayers(playerUTAS).forEach((e,i,a)=>assert.notEqual(e.name, a[i-1].name, "player names must be unique"))
+    let team = makePlayers(playerUTAS);
+    for (let i=1; i<team.length; i++){
+      return assert.notEqual(team[i].name, team[i-1].name, "player names must be unique")
+    };
   });
   it('output should contain players with unique TAS', ()=>{
     let playerUTAS = makeRoster(stars());
-    makePlayers(playerUTAS).forEach((e,i,a)=>assert.notEqual(e.TAS, a[i-1].TAS, "player TAS must be unique"))
+    let team = makePlayers(playerUTAS);
+    for (let i=1; i<team.length; i++){
+      return assert.notEqual(team[i].TAS, team[i-1].TAS, "player TAS must be unique")
+    };
   });
   it(`no single player TAS can be greater than ${playerMax}`, ()=>{
     let playerUTAS = makeRoster(stars());
-    makePlayers(playerUTAS).every(e=>assert.isAtMost(e, 100, `individual player uTAS cannot be greater than ${playerMax}`))
+    makePlayers(playerUTAS).every(e=>assert.isAtMost(e.TAS, 100, `individual player uTAS cannot be greater than ${playerMax}`))
   });
   it(`total players' aTAS should be below salary cap (${salaryCap})`, ()=>{
     let aTAS = 0;

@@ -55,9 +55,9 @@ It seems like we have a good understanding of the task at hand as well as how we
     3. `strength` = `uTAS` - `getRandomInt()`
     4. `agility` = `uTAS` - (`speed` + `strength`)
 ```javascript
-let getRandomInt = () => {
+let getRandomInt = (max) => {
   let min = Math.ceil(0);
-  let max = Math.floor(100);
+  max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 ```
