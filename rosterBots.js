@@ -31,10 +31,10 @@ let makeRoster = (starNumber, max) => {
 };
 
 let makePlayers = (uTAS) => {
-
+  // let Player
 };
 
 module.exports = {
   makeRoster,
-  makePlayer
+  makePlayers
 };

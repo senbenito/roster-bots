@@ -42,7 +42,7 @@ It seems like we have a good understanding of the task at hand as well as how we
     1. subtract `starNumber` from 15 = `bench`
     2. use accumulator pattern: **object.uTAS = 0-`bench-1` points**;
     3. divide remaining points across `starNumber`:  **object.uTAS = math.Floor(remaining points / starNumber)**
-2. `makePlayer(uTAS)`:
+2. `makePlayers(uTAS)`:
   + Input (**array**): `uTAS` array determines the total attribute points to use for each `Player` as well as the `Player.name`
   + Output (**array**): fifteen `Player` objects consisting of:
     + `name` = `ABC` + `uTAS`
@@ -56,8 +56,8 @@ It seems like we have a good understanding of the task at hand as well as how we
     4. `agility` = `uTAS` - (`speed` + `strength`)
 ```javascript
 let getRandomInt = () => {
-  min = Math.ceil(0);
-  max = Math.floor(100);
+  let min = Math.ceil(0);
+  let max = Math.floor(100);
   return Math.floor(Math.random() * (max - min)) + min;
 }
 ```
@@ -67,9 +67,9 @@ We can write some tests to ensure our code does the trick as we go; I like [`cha
 ```javascript
 const assert = require('chai').assert;
 const makeRoster = require('../rosterBots.js').makeRoster;
-const makePlayer = require('../rosterBots.js').makePlayer;
+const makePlayers = require('../rosterBots.js').makePlayers;
 
-assert.typeOf(makeRoster, 'function', 'makeRoster is a function');
-assert.typeOf(makePlayer, 'function', 'makePlayer is a function');
+assert.isFunction(makeRoster, 'makeRoster is a function');
+assert.isFunction(makePlayers, 'makePlayers is a function');
   ...
 ```
