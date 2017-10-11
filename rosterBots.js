@@ -20,10 +20,9 @@ let makeRoster = (starNumber, max) => {
   while (starNumber > 0) {
     results.push(Math.ceil(starPoints / starNumber));
     results.sort();
-
-    for (let j = 1; j < results.length; j++) {
-      if (results[j - 1] == results[j]) results[j] += 1;
-    }
+    results.forEach((ele,ind,arr)=> {
+      if (arr[ind - 1] == ele) results[ind] += 1;
+    });
 
     starPoints = max - results.reduce((a, b) => a + b);
     starNumber -= 1;

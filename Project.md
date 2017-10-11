@@ -44,7 +44,7 @@ It seems like we have a good understanding of the task at hand as well as how we
     2. use accumulator pattern: **object.uTAS = 0-`bench-1` points**;
     3. divide remaining points across `starNumber`:  **object.uTAS = math.Floor(remaining points / starNumber)**
 2. `makePlayer(uTAS)`:
-  + Input (**integer**): `uTAS` determines the total attribute points to use for this `Player` as well as the `Player.name`
+  + Input (**array**): `uTAS` array determines the total attribute points to use for each `Player` as well as the `Player.name`
   + Output (**array**): fifteen `Player` objects consisting of:
     + `name` = `ABC` + `uTAS`
     + `speed` = `uTAS` - `getRandomInt()`
