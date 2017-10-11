@@ -38,14 +38,14 @@ And, since the `uTAS` is by definition unique, we can use this number as a porti
 It seems like we have a good understanding of the task at hand as well as how we'll approach building our `Roster` of `Player`s so let's outline these functions we'll need:
 1. `makeRoster(starNumber)`:
   + Input (**integer**): `starNumber` determines attribute point concentration
-  + Output (**object**): fifteen _unique_ `uTAS` variables
+  + Output (**array**): fifteen _unique_ `uTAS` variables
   + Approach:
     1. subtract `starNumber` from 15 = `bench`
     2. use accumulator pattern: **object.uTAS = 0-`bench-1` points**;
     3. divide remaining points across `starNumber`:  **object.uTAS = math.Floor(remaining points / starNumber)**
 2. `makePlayer(uTAS)`:
   + Input (**integer**): `uTAS` determines the total attribute points to use for this `Player` as well as the `Player.name`
-  + Output (array): fifteen `Player` objects consisting of:
+  + Output (**array**): fifteen `Player` objects consisting of:
     + `name` = `ABC` + `uTAS`
     + `speed` = `uTAS` - `getRandomInt()`
     + `strength` = `uTAS` - `getRandomInt()`
