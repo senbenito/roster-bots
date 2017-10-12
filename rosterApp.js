@@ -7,9 +7,8 @@ $(document).ready(() => {
     event.preventDefault();
     let starNumber = $('#starNumber').val();
     let teamName = $('#teamName').val();
-    let sorting = $( "input[type=radio][name=sorting]:checked" ).val();
+    let sorting = $( 'input[type=radio][name=sorting]:checked').val();
     let team = makePlayers(makeRoster(starNumber), teamName, sorting);
-    console.log(sorting);
     team.forEach((player, index) => {
         let tableRow = $(`#${index}`);
         tableRow.append("<td/>");
