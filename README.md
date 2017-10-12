@@ -1,65 +1,7 @@
 # Shannon Rivers' Roster Bots algorithm
 
 ### Finished Product First:
-<script src="./rosterApp.js" defer></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<form>
-<p><label for="teamName">What do you want to call your team?</label>
-<br/>
-<input id="teamName" type="text" placeholder="Team Name"></p>
-
-<p><label for="starNumber">How many "star" players do you want on your team?</label>
-<br/>
-<input id="starNumber" type="number" min="0" max="15" placeholder="*"></p>
-
-<p>Do you want to prioritize any particular attribute?
-<br/>
-<label><input id="maxTAS" type="radio" value="maxTAS" name="sorting"> Maximum Total Atttribute Score</label>
-<br/>
-<label><input id="maxSpeed" type="radio" value="maxSpeed" name="sorting"> Maximum Speed</label>
-<br/>
-<label><input id="maxStrength" type="radio" value="maxStrength" name="sorting"> Maximum Strength</label>
-<br/>
-<label><input id="maxAgility" type="radio" value="maxAgility" name="sorting"> Maximum Agility</label>
-</p>
-<button type="submit" id="submit">Populate my team, please!</button>
-</form>
-<table id="team">
-  <th>
-    <td>Starter?</td>
-    <td>Name</td>
-    <td>TAS</td>
-    <td>Speed</td>
-    <td>Strength</td>
-    <td>Agility</td>
-  </th>
-  <tr id="sample">
-    <td>Sample</td>
-    <td>yes!</td>
-    <td>SMPL98</td>
-    <td>98</td>
-    <td>37</td>
-    <td>32</td>
-    <td>29</td>
-  </tr>
-  <tr id="0"></tr>
-  <tr id="1"></tr>
-  <tr id="2"></tr>
-  <tr id="3"></tr>
-  <tr id="4"></tr>
-  <tr id="5"></tr>
-  <tr id="6"></tr>
-  <tr id="7"></tr>
-  <tr id="8"></tr>
-  <tr id="9"></tr>
-  <tr id="10"></tr>
-  <tr id="10"></tr>
-  <tr id="11"></tr>
-  <tr id="12"></tr>
-  <tr id="13"></tr>
-  <tr id="14"></tr>
-</table>
+[Roster Bots by Shannon Rivers](./index.html)
 
 
 #### Understanding the Question:

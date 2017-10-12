@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/senbenito/roster-bots#readme",
   "dependencies": {
+    "browserify": "^14.4.0",
     "chai": "*",
     "mocha": "*"
   }
