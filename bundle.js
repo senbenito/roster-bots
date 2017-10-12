@@ -12,6 +12,7 @@ $(document).ready(() => {
     let teamName = $('#teamName').val();
     let sorting = $('#sorting').val();
     let team = makePlayers(makeRoster(starNumber), teamName, sorting);
+    console.log(team);
     team.forEach((player, index) => {
         let tableRow = $(`#${index}`);
         tableRow.append("<td/>");
