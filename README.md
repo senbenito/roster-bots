@@ -2,7 +2,7 @@
 Given the [assignment specifications](./Assignment.md) from Blue Star Sports, following is an outline of my Roster Bots algorithm:
 
 ## Finished Product First:
-[Roster Bots by Shannon Rivers](http://htmlpreview.github.io/?https://github.com/senbenito/roster-bots/blob/master/index.html)
+[![Roster Bots by Shannon Rivers](/roster-bots.jpg)](http://htmlpreview.github.io/?https://github.com/senbenito/roster-bots/blob/master/index.html)
 
 ### Understanding the Question:
 We need to create an algorithm that will create a robot `Player` consisting of four attributes:
