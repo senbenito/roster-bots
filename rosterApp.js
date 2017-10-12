@@ -75,26 +75,47 @@ let makePlayers = (uTAS, teamName, sorting) => {
   }
 };
 
+let makeTable = (team) => {
+  let table = $("<table>");
+  table.attr("class", "responsive-table striped centered cyan-text");
+  let tableHeader = $("<thead>");
+  let tableHeaderRow = $("<tr>")
+  tableHeaderRow.append("<th>Starter?</th>");
+  Object.keys(team[0]).forEach(e=>tableHeaderRow.append(`<th>${e}</th>`));
+  tableHeaderRow.appendTo(tableHeader)
+  tableHeader.appendTo(table)
+  let tableBody = $("<tbody>");
+  team.forEach((player, index) => {
+      let tableRow = $("<tr>");
+      tableRow.attr("id", index)
+      index < 10 ? tableRow.append("<td>Yes!</td>") : tableRow.append("<td>Not today...</td>");
+      Object.values(player).forEach(e => {
+        let tableData = $("<td>");
+        tableData.html(e);
+        tableData.appendTo(tableRow);
+      });//closes player.forEach
+      tableRow.appendTo(tableBody);
+  });//closes team.forEach
+  tableBody.appendTo(table);
+  window.setTimeout(()=>{
+    $("#results").empty();
+    table.appendTo("#results");
+  }, 2000);
+};
+
 $(document).ready(() => {
-  $('#team').hide();
-  $('#submit').on('click', event => {
+  $('#quick-button').on('click', event => {
+    event.preventDefault();
+    let team = makePlayers(makeRoster());
+    return makeTable(team);
+  });
+
+  $('#custom-button').on('click', event => {
     event.preventDefault();
     let starNumber = $('#starNumber').val();
     let teamName = $('#teamName').val();
     let sorting = $( 'input[type=radio][name=sorting]:checked').val();
     let team = makePlayers(makeRoster(starNumber), teamName, sorting);
-    team.forEach((player, index) => {
-        let tableRow = $("<tr>");
-        tableRow.attr("id", index)
-        tableRow.append("<td/>");
-        index < 10 ? tableRow.append("<td>Yes!</td>") : tableRow.append("<td>Not today...</td>");
-        Object.values(player).forEach(e => {
-          let tableData = $("<td>");
-          tableData.html(e);
-          tableData.appendTo(tableRow);
-        });
-        tableRow.appendTo("#team");
-    });
-    $('#team').show();
+    return makeTable(team);
   });
 });
