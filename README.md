@@ -1,10 +1,8 @@
 #Blue Star Sports Mobile App Developer assignment
 ##Roster Bots
 
-#### Congratulations, you are now the owner of a robot sports team!
-Each owner is responsible for creating a roster of player bots for league play.
-The league requires that your roster be filled out with __10 starters and 5 substitutes__.
-You must submit your roster before you can begin league play.
+### Finished Product First:
+[Roster Bots by Shannon Rivers](http://htmlpreview.github.io/?https://github.com/senbenito/roster-bots/blob/master/index.html)
 
 Each player bot needs a name, and has three attribute scores associated with each:
   * __Speed__
