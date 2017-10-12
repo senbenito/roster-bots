@@ -1,3 +1,32 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+const makeRoster = require('./rosterBots.js').makeRoster;
+const makePlayers = require('./rosterBots.js').makePlayers;
+
+$(document).ready(() => {
+  $('#team').hide();
+  $('#submit').on('click', event => {
+    event.preventDefault();
+    let starNumber = $('#starNumber').val();
+    let teamName = $('#teamName').val();
+    let sorting = $('#sorting').val();
+    let team = makePlayers(makeRoster(starNumber), teamName, sorting);
+    team.forEach((player, index) => {
+        let tableRow = $(`#${index}`);
+        tableRow.append("<td/>");
+        index < 10 ? tableRow.append("<td>Yes!</td>") : tableRow.append("<td>Not today...");
+        Object.values(player).forEach(e => {
+          let tableData = $("<td>");
+          tableData.html(e);
+          tableData.appendTo(tableRow);
+        });
+    });
+    $('#team').show();
+  });
+});
+
+},{"./rosterBots.js":2}],2:[function(require,module,exports){
 let triangle = (n) => {
   return (n * n + n) / 2;
 };
@@ -79,3 +108,4 @@ module.exports = {
   makeRoster,
   makePlayers
 };
+},{}]},{},[1]);
