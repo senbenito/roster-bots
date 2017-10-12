@@ -1,33 +1,156 @@
-#Blue Star Sports Mobile App Developer assignment
-##Roster Bots
+#Shannon Rivers' Roster Bots algorithm
 
-#### Congratulations, you are now the owner of a robot sports team!
-Each owner is responsible for creating a roster of player bots for league play.
-The league requires that your roster be filled out with __10 starters and 5 substitutes__.
-You must submit your roster before you can begin league play.
+###Finished Product First:
+<script src="./rosterApp.js" defer></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-Each player bot needs a name, and has three attribute scores associated with each:
-  * __Speed__
-  * __Strength__
-  * __Agility__
+<form>
+<p><label for="teamName">What do you want to call your team?</label>
+<br/>
+<input id="teamName" type="text" placeholder="Team Name"></p>
 
-The total sum of the speed, strength, and agility attributes is calculated as the "total attribute score" for each player bot.
-The league has mandated that the total attribute score of each of your player bots can not exceed 100 points, and no two players can have the same score, otherwise your team is disqualified from league play.
-The league has also implemented a salary cap. Each team's roster can not exceed 175 points.
+<p><label for="starNumber">How many "star" players do you want on your team?</label>
+<br/>
+<input id="starNumber" type="number" min="0" max="15" placeholder="*"></p>
 
-#### Please generate an algorithm that can name your player bots and generates each attribute accordingly, as well as meeting the specifications of the league.
+<p>Do you want to prioritize any particular attribute?
+<br/>
+<label><input id="maxTAS" type="radio" value="maxTAS" name="sorting"> Maximum Total Atttribute Score</label>
+<br/>
+<label><input id="maxSpeed" type="radio" value="maxSpeed" name="sorting"> Maximum Speed</label>
+<br/>
+<label><input id="maxStrength" type="radio" value="maxStrength" name="sorting"> Maximum Strength</label>
+<br/>
+<label><input id="maxAgility" type="radio" value="maxAgility" name="sorting"> Maximum Agility</label>
+</p>
+<button type="submit" id="submit">Populate my team, please!</button>
+</form>
+<table id="team">
+  <th>
+    <td>Starter?</td>
+    <td>Name</td>
+    <td>TAS</td>
+    <td>Speed</td>
+    <td>Strength</td>
+    <td>Agility</td>
+  </th>
+  <tr id="sample">
+    <td>Sample</td>
+    <td>yes!</td>
+    <td>SMPL98</td>
+    <td>98</td>
+    <td>37</td>
+    <td>32</td>
+    <td>29</td>
+  </tr>
+  <tr id="0"></tr>
+  <tr id="1"></tr>
+  <tr id="2"></tr>
+  <tr id="3"></tr>
+  <tr id="4"></tr>
+  <tr id="5"></tr>
+  <tr id="6"></tr>
+  <tr id="7"></tr>
+  <tr id="8"></tr>
+  <tr id="9"></tr>
+  <tr id="10"></tr>
+  <tr id="10"></tr>
+  <tr id="11"></tr>
+  <tr id="12"></tr>
+  <tr id="13"></tr>
+  <tr id="14"></tr>
+</table>
 
 
-Please note the following:
-  * Each player bot created must have a unique name.
-  * Each player bot must have an alphanumeric sequence that looks like the following: "ABC1234" (as an example).
-  * No two player bots can have the same name.
-  * No two player bots can have the same total attribute score (speed + strength + agility = total attribute score).
-  * You may use any sorting algorithm to define your 10 starter bots and 5 substitue bots.
+####Understanding the Question:
+Given the [assignment specifications](./README.md) from [Griffin DePriest @ Blue Star](mailto:griffin.depriest@bluestarsports.com), following is an outline of my Roster Bots algorithm:
 
-Impress us with:
-  * Well written tests.
-  * A well documented project that describes your best practices.
-  * A well structured front-end experience (optional).
+1. We need to create an algorithm that will create a robot `Player` consisting of four attributes:
+  1. `.name`: _unique_, alphanumeric (i.e. 'ABC1234')
+  2. `.speed`: 0-100
+  3. `.strength`: 0-100
+  4. `.agility`: 0-100
+  5. Total Attribute Score (`.TAS` = Sp + St + Ag): <= 100
 
->Please note: that the above are not requirements, but will help us determine your level of experience with the language(s) and tooling you provided.
+2. These players will make up a `Roster` that:
+  1. contains 15 `Player`s
+  2. all _unique_ `Player.TAS`
+  3. `Roster` aggregate `TAS` <= 175
+  4. can be sorted using any sorting algorithm
+
+####Devising a Plan
+Thinking about this `Roster`, it seems like we could have a spectrum of talent running
+  - from a relatively balanced team where each of the 15 `Player`s receives an equal share of the total `Roster` points (175)
+  - to a 'star-player' team where a few of the `Player`s receive a majority of the points with the remainder essentially 'filling out the `Roster`'
+
+>**Let's give the Owner a choice!**
+>
+>We'll create a `makeRoster(starNumber)` function that takes an integer allowing the Owner to concentrate points on a specified number of players (1 ... 15)
+
+Which brings us to our `Player`s... each will have a share of the aggregate Total Attribute Score (`aTAS`), designated by the Owner pardigm (`starNumber`), to determine its unique Total Attribute Score (`uTAS`), so we'll use that algorithmically generated `uTAS` to portion out the `speed`, `strength` and `agility` attribute scores.
+
+And, since the `uTAS` is by definition unique, we can use this number as a portion of the `Player.name` ensuring the `Player.name` is unique - _BOOM_!
+
+>**Polymorphism at Play**
+>
+>We can reuse the same `makePlayer()` function that takes an argument `uTAS` generated by the `makeRoster()` function that itself can be reused by supplying a different `starNumber` argument to determine the `Roster` attribute points distribution paradigm.
+
+####Code a Solution
+It seems like we have a good understanding of the task at hand as well as how we'll approach building our `Roster` of `Player`s so let's outline these functions we'll need:
+1. `makeRoster(starNumber)`:
+  + Input (**integer**): `starNumber` determines attribute point concentration
+  + Output (**array**): fifteen _unique_ `uTAS` variables
+  + Approach:
+    1. subtract `starNumber` from 15 = `bench`
+    2. use accumulator pattern: **object.uTAS = 0-`bench-1` points**;
+    3. divide remaining points across `starNumber`:  **object.uTAS = math.Floor(remaining points / starNumber)**
+2. `makePlayers(uTAS)`:
+  + Input (**array**): `uTAS` array determines the total attribute points to use for each `Player` as well as the `Player.name`
+  + Output (**array**): fifteen `Player` objects consisting of:
+    + `name` = `ABC` + `uTAS`
+    + `speed` = `uTAS` - `getRandomInt()`
+    + `strength` = `uTAS` - `getRandomInt()`
+    + `agility` = `uTAS` - (`speed` + `strength`)
+  + Approach:
+    1. `name` = `ABC` + `uTAS`
+    2. `speed` = `uTAS` - `getRandomInt()`
+    3. `strength` = `uTAS` - `getRandomInt()`
+    4. `agility` = `uTAS` - (`speed` + `strength`)
+```javascript
+let getRandomInt = (max) => {
+  let min = Math.ceil(0);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+```
+
+####Check Your Work!
+We can write some tests to ensure our code does the trick as we go; I like [`chai`](http://chaijs.com/):
+```javascript
+const assert = require('chai').assert;
+const makeRoster = require('../rosterBots.js').makeRoster;
+const makePlayers = require('../rosterBots.js').makePlayers;
+
+assert.isFunction(makeRoster, 'makeRoster is a function');
+assert.isFunction(makePlayers, 'makePlayers is a function');
+  ...
+```
+Tests are written with the [`chai`](http://chaijs.com/) Assertion Library because we can easily get very specific with expressions and because I like supplying more error-context with messages: `assert(expression, message)`.
+
+In order to test as many cases as possible, I created a random-number-generator function, `stars()`, in the testing file that is called to supply arguments for the `makeRoster()` function. Since `stars()` is invoked at each new `it` instantiation, we can test multiple possibilities.
+
+In addition, rules that may change over the course of the seasons are variables (e.g. `salaryCap` & `playerMax`), allowing us to easily update tests for the latest legue policy.
+
+####Extra features...
+Code should be as flexible and reusable as possible, for these reasons I added in some features to the Roster Bot algorithm that will allow a measure of versatility for changing legaue rules and owner preferences:
++ as above, `test.js` contains two variables to accommodate league changes:
+  + `salaryCap`, currently set to **175**
+  +  `playerMax`, currently set to **100**
++ `makeRoster` takes an optional argument, `starNumber`, that allows an owner to concentrate atttribute points on a specified number of players
++ `makeRoster` also can adjust to new legue policy with an optional `salaryCap` argument
++ `makePlayers` takes an optional argument string, `'teamName'`, which allows a user to specify a string of choice to be included in all `Player.name` values.
++ `makePlayers` also allows a user to specifiy an optional sorting method string:
+  + `'maxTAS'`: this argument, the default, orders the `makePlayers()` output array in descending order by `Player.TAS`
+  + `'maxSpeed'`: this argument orders the `makePlayers()` output array in descending order by `Player.speed`
+  + `'maxStrength'`: this argument orders the `makePlayers()` output array in descending order by `Player.strength`
+  + `'maxAgility'`: this argument orders the `makePlayers()` output array in descending order by `Player.agility`
