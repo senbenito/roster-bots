@@ -6,14 +6,27 @@ let getRandomInt = (max) => {
   let min = Math.ceil(0);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
-}
+};
 
-let makeRoster = (starNumber, max) => {
+let bubbleSort = (arr, key) => {
+  for (let i = arr.length - 1; i >= 0; i--) {
+    for (let j = 1; j <= i; j++) {
+      if (arr[j - 1][`${key}`] < arr[j][`${key}`]) {
+        let temp = arr[j - 1];
+        arr[j - 1] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+  return arr;
+};
+
+let makeRoster = (starNumber, salaryCap) => {
   let results = [];
 
   if (!starNumber || starNumber < 1 && starNumber > 15) starNumber = 14;
   if (starNumber % 3 === 0) starNumber = 6;
-  if (!max) max = 175;
+  if (!salaryCap) salaryCap = 175;
 
   let bench = 15 - starNumber;
   let starPoints;
@@ -21,25 +34,26 @@ let makeRoster = (starNumber, max) => {
   for (let i = 0; i < bench; i++) {
     results.push(i);
   }
-  results.length === 0 ? starPoints = max : starPoints = max - results.reduce((a, b) => a + b);
+  results.length === 0 ? starPoints = salaryCap : starPoints = salaryCap - results.reduce((a, b) => a + b);
 
   while (starNumber > 0) {
     results.push(Math.ceil(starPoints / starNumber));
     results.sort();
-    results.forEach((ele,ind,arr)=> {
+    results.forEach((ele, ind, arr) => {
       if (arr[ind - 1] == ele) results[ind] += 1;
     });
 
-    starPoints = max - results.reduce((a, b) => a + b);
+    starPoints = salaryCap - results.reduce((a, b) => a + b);
     starNumber -= 1;
   }
   return results;
 };
 
-let makePlayers = (uTAS, teamName) => {
+let makePlayers = (uTAS, teamName, sorting) => {
   if (!teamName) teamName = "BSS";
+  if (!sorting) sorting = "byTAS";
   class Player {
-    constructor(TAS, teamName){
+    constructor(TAS, teamName) {
       this.name = teamName + TAS;
       this.TAS = TAS;
       this.speed = this.TAS - getRandomInt(TAS);
@@ -47,7 +61,18 @@ let makePlayers = (uTAS, teamName) => {
       this.agility = this.TAS - this.speed - this.strength;
     }
   }
-  return uTAS.map(e=> new Player(e,teamName));
+  let team = uTAS.map(e => new Player(e, teamName));
+  switch (sorting) {
+    case "maxTAS":
+    default:
+      return bubbleSort(team, 'TAS');
+    case "maxSpeed":
+      return bubbleSort(team, 'speed');
+    case "maxStrength":
+      return bubbleSort(team, 'strength');
+    case "maxAgility":
+      return bubbleSort(team, 'agility');
+  }
 };
 
 module.exports = {

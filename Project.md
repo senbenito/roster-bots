@@ -75,6 +75,20 @@ assert.isFunction(makePlayers, 'makePlayers is a function');
 ```
 Tests are written with the [`chai`](http://chaijs.com/) Assertion Library because we can easily get very specific with expressions and because I like supplying more error-context with messages: `assert(expression, message)`.
 
-In order to test as many cases as possible, I created a random-number-generator function, `stars`, in the testing file that is called to supply arguments for the `makeRoster()` function. Since `stars` is called at each new `it`, we can test multiple possibilities.
+In order to test as many cases as possible, I created a random-number-generator function, `stars()`, in the testing file that is called to supply arguments for the `makeRoster()` function. Since `stars()` is invoked at each new `it` instantiation, we can test multiple possibilities.
 
 In addition, rules that may change over the course of the seasons are variables (e.g. `salaryCap` & `playerMax`), allowing us to easily update tests for the latest legue policy.
+
+####Extra features...
+Code should be as flexible and reusable as possible, for these reasons I added in some features to the Roster Bot algorithm that will allow a measure of versatility for changing legaue rules and owner preferences:
++ as above, `test.js` contains two variables to accommodate league changes:
+  + `salaryCap`, currently set to **175**
+  +  `playerMax`, currently set to **100**
++ `makeRoster` takes an optional argument, `starNumber`, that allows an owner to concentrate atttribute points on a specified number of players
++ `makeRoster` also can adjust to new legue policy with an optional `salaryCap` argument
++ `makePlayers` takes an optional argument string, `'teamName'`, which allows a user to specify a string of choice to be included in all `Player.name` values.
++ `makePlayers` also allows a user to specifiy an optional sorting method string:
+  + `'byTAS'`: this argument, the default, orders the `makePlayers()` output array in descending order by `Player.TAS`
+  + `'maxSpeed'`: this argument orders the `makePlayers()` output array in descending order by `Player.speed`
+  + `'maxStrength'`: this argument orders the `makePlayers()` output array in descending order by `Player.strength`
+  + `'maxAgility'`: this argument orders the `makePlayers()` output array in descending order by `Player.agility`
