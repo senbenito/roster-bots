@@ -1,7 +1,7 @@
 # Shannon Rivers' Roster Bots algorithm
 
 ### Finished Product First:
-[Roster Bots by Shannon Rivers](./index.html)
+[Roster Bots by Shannon Rivers](http://htmlpreview.github.io/?https://github.com/senbenito/roster-bots/blob/coding/index.html)
 
 
 #### Understanding the Question:
