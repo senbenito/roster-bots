@@ -1,5 +1,3 @@
-'use strict';
-
 const makeRoster = require('./rosterBots.js').makeRoster;
 const makePlayers = require('./rosterBots.js').makePlayers;
 
@@ -9,9 +7,9 @@ $(document).ready(() => {
     event.preventDefault();
     let starNumber = $('#starNumber').val();
     let teamName = $('#teamName').val();
-    let sorting = $('#sorting').val();
+    let sorting = $( "input[type=radio][name=sorting]:checked" ).val();
     let team = makePlayers(makeRoster(starNumber), teamName, sorting);
-    console.log(team);
+    console.log(sorting);
     team.forEach((player, index) => {
         let tableRow = $(`#${index}`);
         tableRow.append("<td/>");
