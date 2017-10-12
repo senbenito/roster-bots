@@ -104,13 +104,7 @@ let makeTable = (team) => {
 };
 
 $(document).ready(() => {
-  $('#quick-button').on('click', event => {
-    event.preventDefault();
-    let team = makePlayers(makeRoster());
-    return makeTable(team);
-  });
-
-  $('#custom-button').on('click', event => {
+  $('button').on('click', event => {
     event.preventDefault();
     let starNumber = $('#starNumber').val();
     let teamName = $('#teamName').val();
