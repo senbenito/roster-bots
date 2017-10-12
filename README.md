@@ -1,20 +1,18 @@
 # Shannon Rivers' Roster Bots algorithm
+Given the [assignment specifications](./Assignment.md) from Blue Star Sports, following is an outline of my Roster Bots algorithm:
 
 ### Finished Product First:
 [Roster Bots by Shannon Rivers](http://htmlpreview.github.io/?https://github.com/senbenito/roster-bots/blob/master/index.html)
 
-
 #### Understanding the Question:
-Given the [assignment specifications](./Assignment.md) from Blue Star Sports, following is an outline of my Roster Bots algorithm:
-
-1. We need to create an algorithm that will create a robot `Player` consisting of four attributes:
+We need to create an algorithm that will create a robot `Player` consisting of four attributes:
   1. `.name`: _unique_, alphanumeric (i.e. 'ABC1234')
-  2. `.speed`: 0-100
+  1. `.speed`: 0-100
   3. `.strength`: 0-100
   4. `.agility`: 0-100
   5. Total Attribute Score (`.TAS` = Sp + St + Ag): <= 100
 
-2. These players will make up a `Roster` that:
+These players will make up a `Roster` that:
   1. contains 15 `Player`s
   2. all _unique_ `Player.TAS`
   3. `Roster` aggregate `TAS` <= 175
