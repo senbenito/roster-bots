@@ -1,5 +1,5 @@
 # Shannon Rivers' Roster Bots algorithm
-Given the [assignment specifications](./Assignment.md) from Blue Star Sports, following is an outline of my Roster Bots algorithm:
+Given the [assignment specifications](./Assignment.md) from Blue Star Sports, following is an outline of my Roster Bots algorithm implementation:
 
 ## "obligatory final product first picture."
 [![Roster Bots by Shannon Rivers](/images/roster-bots.jpg)](http://htmlpreview.github.io/?https://github.com/senbenito/roster-bots/blob/master/index.html)
