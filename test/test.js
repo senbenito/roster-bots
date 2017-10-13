@@ -1,8 +1,8 @@
 'use strict';
 
 const assert = require('chai').assert;
-const makeRoster = require('../rosterBots.js').makeRoster;
-const makePlayers = require('../rosterBots.js').makePlayers;
+const makeRoster = require('../js/rosterBots.js').makeRoster;
+const makePlayers = require('../js/rosterBots.js').makePlayers;
 const salaryCap = 175;
 const playerMax = 100;
 let stars=()=>{

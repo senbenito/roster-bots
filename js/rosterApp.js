@@ -77,6 +77,7 @@ let makePlayers = (uTAS, teamName, sorting) => {
 
 let makeTable = (team) => {
   window.scrollTo(0, $('#scroll-here').offset().top);
+  window.setTimeout(()=>{$("#shake").attr("class", "header col s12 light shake");}, 500);
   let table = $("<table>");
   table.attr("class", "responsive-table striped centered cyan-text text-accent-1 z-depth-4");
   let tableHeader = $("<thead>");
@@ -101,6 +102,7 @@ let makeTable = (team) => {
   window.setTimeout(()=>{
     $("#results").empty();
     table.appendTo("#results");
+    window.scrollTo(0, $('#scroll-here').offset().top);
   }, 2000);
 };
 
