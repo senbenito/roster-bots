@@ -10,7 +10,21 @@ body {
   height: 150vh;
 }
 
+.neon {
+  font-family: 'Monoton', cursive;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
 
+@-webkit-keyframes neon1 {
+  from {
+    color: #84ffff;
+    text-shadow: 0 0 10px #26c6da, 0 0 20px #b2ebf2, 0 0 30px #26c6da, 0 0 40px #b2ebf2, 0 0 70px #26c6da, 0 0 80px #b2ebf2, 0 0 100px #26c6da, 0 0 150px #b2ebf2;
+  }
+  to {
+    color: ##18ffff;
+    text-shadow: 0 0 5px #006064, 0 0 10px #e0f7fa, 0 0 15px #006064, 0 0 20px #e0f7fa, 0 0 35px #006064, 0 0 40px #e0f7fa, 0 0 50px #006064, 0 0 75px #e0f7fa;
+  }
+}
 
 nav ul a,
 nav .brand-logo {
@@ -52,7 +66,8 @@ p {
 }
 
 .icon-block {
-  padding: 0 15px;
+  padding: 5px 15px;
+  height: 45vh;
 }
 .icon-block .material-icons {
   font-size: inherit;

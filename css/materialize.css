@@ -2916,11 +2916,11 @@ table.bordered > tbody > tr {
 }
 
 table.striped > tbody > tr:nth-child(odd) {
-  background-color: #f2f2f2;
+  background-color: rgba(0, 51, 56, 0.6);
 }
 
 table.striped > tbody > tr > td {
-  border-radius: 0;
+  border-radius: 15%;
 }
 
 table.highlight > tbody > tr {

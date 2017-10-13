@@ -1,5 +1,5 @@
-#Blue Star Sports Mobile App Developer assignment
-##Roster Bots
+# Blue Star Sports Mobile App Developer assignment
+## Roster Bots
 
 #### Congratulations, you are now the owner of a robot sports team!
 Each owner is responsible for creating a roster of player bots for league play.

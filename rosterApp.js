@@ -76,8 +76,9 @@ let makePlayers = (uTAS, teamName, sorting) => {
 };
 
 let makeTable = (team) => {
+  window.scrollTo(0, $('#scroll-here').offset().top);
   let table = $("<table>");
-  table.attr("class", "responsive-table striped centered cyan-text");
+  table.attr("class", "responsive-table striped centered cyan-text text-accent-1 z-depth-4");
   let tableHeader = $("<thead>");
   let tableHeaderRow = $("<tr>")
   tableHeaderRow.append("<th>Starter?</th>");
